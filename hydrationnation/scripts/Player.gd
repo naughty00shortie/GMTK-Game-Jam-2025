@@ -1,38 +1,26 @@
 extends CharacterBody2D
 
-@export var speed := 50
-@export var maxHealth := 100
-@export var health := 100
-@export var attackDamage := 10
-@export var attackCooldown := 1
-
-
-func _ready():
-	print("yeet")
-
-
-
-func _physics_process(_delta: float) -> void:
-	
-	var direction = Vector2.ZERO
-	
-	if Input.is_action_pressed("move_down"):
-		direction.y += 1
-	if Input.is_action_pressed("move_up"):
-		direction.y -= 1
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-	if Input.is_action_just_pressed("attack"):
-		attack()
-
-	velocity = direction * speed
+class_name Player
+const SPEED = 100.0
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+func _physics_process(delta: float) -> void:
+	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
+	velocity = direction * SPEED
 	move_and_slide()
 
+	if velocity.length() > 0:
+		play_walk_animation()
+	else:
+		play_idle_animation()
+
+func play_idle_animation():
+	$AnimatedSprite2D.play("idle")
 func takeDamage(damage: int):
 	pass
 
+func play_walk_animation():
+	$AnimatedSprite2D.play("walk")
 func attack():
 	pass
 
