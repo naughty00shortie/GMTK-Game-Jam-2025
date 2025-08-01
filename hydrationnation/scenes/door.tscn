@@ -11,3 +11,5 @@ script = ExtResource("1_sld5e")
 shape = SubResource("RectangleShape2D_xxx1h")
 
 [node name="spawn" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

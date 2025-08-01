@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5oiq7uxp47sr"]
 
-[ext_resource type="Texture2D" uid="uid://c06gt482juh63" path="res://hydrationnation/assets/tiels/grassField.png" id="1_bdj5i"]
+[ext_resource type="Texture2D" path="res://hydrationnation/assets/tiels/grassField.png" id="1_bdj5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4qn"]
 size = Vector2(31, 32)
