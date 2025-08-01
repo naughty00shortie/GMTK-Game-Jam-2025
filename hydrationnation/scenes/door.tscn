@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://csrrsw6vcer2m"]
+
+[ext_resource type="Script" uid="uid://f0duooo0oxth" path="res://hydrationnation/scripts/door.gd" id="1_sld5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxx1h"]
+
+[node name="door" type="Area2D"]
+script = ExtResource("1_sld5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xxx1h")
+
+[node name="spawn" type="Marker2D" parent="."]

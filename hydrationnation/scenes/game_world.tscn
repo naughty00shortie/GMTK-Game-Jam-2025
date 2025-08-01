@@ -1,11 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3jnyyo11i3gy"]
+[gd_scene load_steps=6 format=3 uid="uid://b3jnyyo11i3gy"]
 
 [ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="1_2imq1"]
+[ext_resource type="PackedScene" uid="uid://c5oiq7uxp47sr" path="res://hydrationnation/scenes/obstacle.tscn" id="2_2fdra"]
+[ext_resource type="Texture2D" uid="uid://cpirmhd5iicga" path="res://hydrationnation/assets/sprites/platforms.png" id="3_u6qby"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ntqtn"]
+texture = ExtResource("3_u6qby")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_y6qu3"]
+sources/0 = SubResource("TileSetAtlasSource_ntqtn")
 
 [node name="GameWorld" type="Node2D"]
+y_sort_enabled = true
+
+[node name="background" type="ColorRect" parent="."]
+offset_left = -143.0
+offset_top = -80.0
+offset_right = 144.0
+offset_bottom = 80.0
+color = Color(0.270299, 0.451745, 0.694137, 1)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_2imq1")]
-position = Vector2(0, -13)
+position = Vector2(1, -12)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_2fdra")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_y6qu3")
+format = 2
