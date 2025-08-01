@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://by84e28tvljve"]
+
+[ext_resource type="Script" uid="uid://i7duc6swh5oy" path="res://hydrationnation/scripts/test.gd" id="1_37kl0"]
+[ext_resource type="Texture2D" uid="uid://77rajkjqppyf" path="res://Screenshot 2025-07-31 203459.png" id="2_8uh7m"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_37kl0")
+
+[node name="Screenshot2025-07-31203459" type="Sprite2D" parent="."]
+position = Vector2(2, 5)
+texture = ExtResource("2_8uh7m")
