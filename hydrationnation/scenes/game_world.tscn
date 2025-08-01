@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3jnyyo11i3gy"]
+
+[ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="1_2imq1"]
+
+[node name="GameWorld" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_2imq1")]
+position = Vector2(0, -13)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)

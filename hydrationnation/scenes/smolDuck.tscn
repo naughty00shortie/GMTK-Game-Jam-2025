@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://doojfslomi3h8"]
+
+[ext_resource type="Texture2D" uid="uid://rvf3peh3pdxw" path="res://hydrationnation/assets/sprites/knight.png" id="1_iblbp"]
+
+[sub_resource type="GDScript" id="GDScript_uv0oh"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 100.0
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+func _physics_process(delta: float) -> void:
+	var direction = Input.get_vector(\"move_left\",\"move_right\",\"move_up\",\"move_down\")
+	velocity = direction * SPEED
+	move_and_slide()
+	
+	if velocity.length() > 0:
+		play_walk_animation()
+	else:
+		play_idle_animation()
+
+func play_idle_animation():
+	$AnimatedSprite2D.play(\"idle\")
+	
+func play_walk_animation():
+	$AnimatedSprite2D.play(\"walk\")
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iblbp"]
+atlas = ExtResource("1_iblbp")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv3t6"]
+atlas = ExtResource("1_iblbp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfwxs"]
+atlas = ExtResource("1_iblbp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du8vh"]
+atlas = ExtResource("1_iblbp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbugp"]
+atlas = ExtResource("1_iblbp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghr73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iblbp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv3t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfwxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du8vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbugp")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6gxv4"]
+radius = 6.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = SubResource("GDScript_uv0oh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ghr73")
+animation = &"walk"
+frame_progress = 0.361511
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_6gxv4")
