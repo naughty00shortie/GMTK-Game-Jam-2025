@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=4 uid="uid://b3jnyyo11i3gy"]
 
 [ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="1_2imq1"]
+[ext_resource type="Script" uid="uid://bqqf1qtuuqksf" path="res://hydrationnation/scripts/GameRunner.gd" id="1_pr81v"]
 [ext_resource type="PackedScene" uid="uid://c5oiq7uxp47sr" path="res://hydrationnation/scenes/obstacle.tscn" id="2_2fdra"]
-[ext_resource type="Texture2D" uid="uid://cpirmhd5iicga" path="res://hydrationnation/assets/sprites/platforms.png" id="3_u6qby"]
 [ext_resource type="Texture2D" uid="uid://dw5y62dq4r7r6" path="res://hydrationnation/assets/tiles/PathDown.png" id="4_gtja3"]
 [ext_resource type="Texture2D" uid="uid://qalvsympow7o" path="res://hydrationnation/assets/tiles/PathDownEdge.png" id="5_pr81v"]
 [ext_resource type="Texture2D" uid="uid://cr6fnuwugqb8a" path="res://hydrationnation/assets/tiles/PathLeft.png" id="6_h6out"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://csrrsw6vcer2m" path="res://hydrationnation/scenes/door.tscn" id="12_pr81v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s71yr"]
-texture = ExtResource("3_u6qby")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -99,6 +98,7 @@ sources/7 = SubResource("TileSetAtlasSource_oqxgs")
 
 [node name="GameWorld" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_pr81v")
 
 [node name="background" type="ColorRect" parent="."]
 offset_left = -143.0
@@ -125,4 +125,12 @@ tile_set = SubResource("TileSet_jl1ix")
 
 [node name="door_east" parent="." instance=ExtResource("12_pr81v")]
 position = Vector2(132, 5)
-spawn_position = "up"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = -139.0
+offset_top = -76.0
+offset_right = -99.0
+offset_bottom = -53.0

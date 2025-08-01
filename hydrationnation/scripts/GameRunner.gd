@@ -2,7 +2,7 @@ extends Node
 
 
 @onready var timer = $Timer
-@onready var timerLabel = $CharacterBody2D/TimerLabel
+@onready var timerLabel = $TimerLabel
 
 
 func _ready():
