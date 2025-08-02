@@ -114,6 +114,10 @@ script = ExtResource("13_g1f37")
 position = Vector2(-122, 4)
 destination_level = "res://hydrationnation/scenes/fishing_room.tscn"
 
+[node name="door_north" parent="." instance=ExtResource("11_6vt5i")]
+position = Vector2(0, -60)
+destination_level = "res://hydrationnation/scenes/Rhythm.tscn"
+
 [node name="door_jam" parent="." instance=ExtResource("11_6vt5i")]
 position = Vector2(-3, 65)
 destination_level = "res://hydrationnation/scenes/jam_level.tscn"
