@@ -1,0 +1,5 @@
+# Enforce LF for text files
+* text=auto
+
+# Keep binary files untouched
+*.import binary
