@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://7qjs04vmtn4p"]
+
+[ext_resource type="Texture2D" uid="uid://d2qecl3ha3n4s" path="res://hydrationnation/assets/sprites/pump.png" id="1_qxrwp"]
+[ext_resource type="Script" uid="uid://crtqbtpo3hily" path="res://hydrationnation/scripts/pump.gd" id="1_wqnky"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqnky"]
+atlas = ExtResource("1_qxrwp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v4up"]
+atlas = ExtResource("1_qxrwp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kku0x"]
+atlas = ExtResource("1_qxrwp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chpx5"]
+atlas = ExtResource("1_qxrwp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6esvo"]
+atlas = ExtResource("1_qxrwp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4yqi"]
+atlas = ExtResource("1_qxrwp")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncj2a"]
+atlas = ExtResource("1_qxrwp")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3n30o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqnky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v4up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kku0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chpx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6esvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4yqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncj2a")
+}],
+"loop": false,
+"name": &"pump",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrwp"]
+size = Vector2(32.5, 34)
+
+[node name="pump" type="Node2D"]
+script = ExtResource("1_wqnky")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3n30o")
+animation = &"pump"
+frame = 6
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_qxrwp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
