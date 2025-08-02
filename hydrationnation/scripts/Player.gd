@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed := 50
+var last_direction := Vector2.RIGHT
 
 @onready var animator = $AnimatedSprite2D
 @onready var fishing_rod = $FishingRod
@@ -13,57 +14,76 @@ func _physics_process(delta: float) -> void:
 
 	var direction = Vector2.ZERO
 
-
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
+	#moving
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
+		last_direction = direction
 
-		if abs(direction.x) > abs(direction.y):
+		#moving horizontally
+		if abs(direction.x) > abs(direction.y): 
 			animator.play("walk_horizontal")
-
+	
+			#moving left
 			if (direction.x < 0):
 				animator.flip_h = true;
 				fishing_rod.flip_h = true;
 				fishing_rod.z_index = 0;
 				fishing_rod.position = Vector2(-14, -12)
 
+			#moving right
 			else:
 				animator.flip_h = false;
 				fishing_rod.flip_h = false;
 				fishing_rod.z_index = 2;
 				fishing_rod.position = Vector2(32, -8)
-
-		else:
+				
+		#moving vertically
+		else: 
+			
+			#moving down
 			if direction.y > 0:
 				animator.play("walk_down")
+				fishing_rod.flip_h = false;
 				fishing_rod.z_index = 2;
+				fishing_rod.position = Vector2(32, -8)
+				
+			#moving up
 			else:
 				animator.play("walk_up")
 				fishing_rod.z_index = 0;
+				fishing_rod.flip_h = true;
+				fishing_rod.position = Vector2(-14, -12)
+				
+	#stop moving
 	else:
-		animator.play("idle")
-		fishing_rod.z_index = 2;
-		fishing_rod.flip_h = false;
-		fishing_rod.position = Vector2(32, -8)
+		
+		#was last moving horizontally
+		if abs(last_direction.x) > abs(last_direction.y):
+			animator.play("idle_horizontal")
+			
+		#was last moving vertically
+		else:
+			
+			#was last moving up
+			if last_direction.y < 0:
+				animator.play("idle_up")
+				fishing_rod.flip_h = true;
+			
+			#was last moving down
+			else: 
+				animator.play("idle_down")
+				fishing_rod.z_index = 2;
+				fishing_rod.flip_h = false;
+				fishing_rod.position = Vector2(32, -8)
 	
 	velocity = direction * speed
 	move_and_slide()
 
-	if velocity.length() > 0:
-		play_walk_animation()
-	else:
-		play_idle_animation()
-
-func play_idle_animation():
-	$AnimatedSprite2D.play("idle")
-	
 func takeDamage(damage: int):
 	pass
-
-func play_walk_animation():
-	$AnimatedSprite2D.play("walk")
 	
 func attack():
 	pass

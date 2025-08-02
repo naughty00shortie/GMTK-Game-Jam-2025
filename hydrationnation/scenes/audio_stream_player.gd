@@ -1,14 +1,31 @@
 extends AudioStreamPlayer
 
-const level_music = preload("res://hydrationnation/audio/music/bgm1.ogg")
+var playlist: Array[AudioStream] =[
+	preload("res://hydrationnation/audio/music/bgm1.ogg"),
+	preload("res://hydrationnation/audio/music/transition.ogg"),
+	preload("res://hydrationnation/audio/music/bgm2.ogg"),
+	#preload("res://hydrationnation/audio/music/bgm3.ogg"),
+	
+]
 
-func _play_music(music: AudioStream, volume = 0.0):
-	if stream == music:
-		return
-	
-	stream = music
-	volume_db = volume
+var current_index := 0
+
+
+func _ready() -> void:
+	finished.connect(_on_finished)
+
+
+func _play_current() -> void:
+	stream = playlist[current_index]
 	play()
-	
-func play_music_level():
-	_play_music(level_music)
+
+
+func _on_finished() -> void:
+	current_index += 1
+	if current_index >= playlist.size():
+		current_index = 0
+	_play_current()
+
+func play_playlist() -> void:
+	current_index = 0
+	_play_current()

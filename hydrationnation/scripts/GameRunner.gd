@@ -5,7 +5,7 @@ extends Node2D
 @onready var timerLabel = $CanvasLayer/TimerLabel
 
 func _ready():
-	GlobalAudioStreamPlayer.play_music_level()
+	GlobalAudioStreamPlayer.play_playlist()
 	print("yeet")
 	timerLabel.text = "yeeet"
 	timer.start()
