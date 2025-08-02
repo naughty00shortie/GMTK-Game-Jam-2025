@@ -6,6 +6,7 @@ extends Node
 
 
 func _ready():
+	GlobalAudioStreamPlayer.play_music_level()
 	print("yeet")
 	timerLabel.text = "yeeet"
 	timer.start()
