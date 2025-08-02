@@ -1,7 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8vlap6ow43c6"]
+[gd_scene load_steps=5 format=3 uid="uid://b8vlap6ow43c6"]
 
+[ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="1_1ge7h"]
 [ext_resource type="PackedScene" uid="uid://dmdvwhllu2bgc" path="res://hydrationnation/scenes/Jam.tscn" id="1_7js30"]
+[ext_resource type="PackedScene" uid="uid://csrrsw6vcer2m" path="res://hydrationnation/scenes/door.tscn" id="2_aou4s"]
+[ext_resource type="PackedScene" uid="uid://c1kh4khok4asq" path="res://hydrationnation/scenes/tile_map_layer.tscn" id="4_7u7f5"]
 
 [node name="JamLevel" type="Node2D"]
 
 [node name="growingObject" parent="." instance=ExtResource("1_7js30")]
+position = Vector2(0, -11)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 4)
+zoom = Vector2(4, 4)
+
+[node name="door" parent="." instance=ExtResource("2_aou4s")]
+position = Vector2(0, 63)
+destination_level = "res://hydrationnation/scenes/main_game_world.tscn"
+
+[node name="Duck" parent="." instance=ExtResource("1_1ge7h")]
+position = Vector2(-3.8147e-06, 40)
+
+[node name="TileMapLayer" parent="." instance=ExtResource("4_7u7f5")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dms82gu5oei2q"]
+[gd_scene load_steps=23 format=3 uid="uid://b3jnyyo11i3gy"]
 
 [ext_resource type="PackedScene" uid="uid://c5oiq7uxp47sr" path="res://hydrationnation/scenes/obstacle.tscn" id="2_g1f37"]
 [ext_resource type="Texture2D" uid="uid://dw5y62dq4r7r6" path="res://hydrationnation/assets/tiles/PathDown.png" id="3_8c01m"]
@@ -113,3 +113,7 @@ script = ExtResource("13_g1f37")
 [node name="door_west" parent="." instance=ExtResource("11_6vt5i")]
 position = Vector2(-122, 4)
 destination_level = "res://hydrationnation/scenes/fishing_room.tscn"
+
+[node name="door_jam" parent="." instance=ExtResource("11_6vt5i")]
+position = Vector2(-3, 65)
+destination_level = "res://hydrationnation/scenes/jam_level.tscn"
