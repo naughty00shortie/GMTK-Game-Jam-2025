@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3jnyyo11i3gy"]
+[gd_scene load_steps=23 format=3 uid="uid://dms82gu5oei2q"]
 
 [ext_resource type="PackedScene" uid="uid://c5oiq7uxp47sr" path="res://hydrationnation/scenes/obstacle.tscn" id="2_g1f37"]
 [ext_resource type="Texture2D" uid="uid://dw5y62dq4r7r6" path="res://hydrationnation/assets/tiles/PathDown.png" id="3_8c01m"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://csrrsw6vcer2m" path="res://hydrationnation/scenes/door.tscn" id="11_6vt5i"]
 [ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="12_21irx"]
 [ext_resource type="AudioStream" uid="uid://bxr20e0nuise7" path="res://hydrationnation/audio/music/bgm2.ogg" id="13_8c01m"]
-[ext_resource type="Script" path="res://hydrationnation/scenes/audio_stream_player.gd" id="13_g1f37"]
+[ext_resource type="Script" uid="uid://dtltduxkurij4" path="res://hydrationnation/scenes/audio_stream_player.gd" id="13_g1f37"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4grn"]
 texture = ExtResource("3_8c01m")
@@ -109,3 +109,7 @@ position = Vector2(-63, 2)
 [node name="audio_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_8c01m")
 script = ExtResource("13_g1f37")
+
+[node name="door_west" parent="." instance=ExtResource("11_6vt5i")]
+position = Vector2(-122, 4)
+destination_level = "res://hydrationnation/scenes/fishing_room.tscn"

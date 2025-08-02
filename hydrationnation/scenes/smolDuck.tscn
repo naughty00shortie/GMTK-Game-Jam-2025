@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://doojfslomi3h8"]
+[gd_scene load_steps=40 format=3 uid="uid://doojfslomi3h8"]
 
 [ext_resource type="Texture2D" uid="uid://bbdlfwebglwq0" path="res://hydrationnation/assets/sprites/duck/animation/down_idle.png" id="1_uv0oh"]
 [ext_resource type="Script" uid="uid://droe5h4o8sl3a" path="res://hydrationnation/scripts/Player.gd" id="1_vfwxs"]
 [ext_resource type="Texture2D" uid="uid://twbmh2d1scud" path="res://hydrationnation/assets/sprites/duck/animation/side_move.png" id="2_qv3t6"]
 [ext_resource type="Texture2D" uid="uid://cby7c4cjxw14m" path="res://hydrationnation/assets/sprites/duck/animation/up_move.png" id="3_vfwxs"]
+[ext_resource type="Texture2D" uid="uid://ymev5nmpgejr" path="res://hydrationnation/assets/sprites/objects/rod.png" id="5_du8vh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_du8vh"]
 atlas = ExtResource("1_uv0oh")
@@ -260,6 +261,7 @@ scale = Vector2(0.3, 0.3)
 script = ExtResource("1_vfwxs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_ghr73")
 animation = &"walk_up"
 frame_progress = 0.48595
@@ -267,3 +269,7 @@ frame_progress = 0.48595
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_6gxv4")
+
+[node name="FishingRod" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("5_du8vh")
