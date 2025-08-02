@@ -255,8 +255,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gxv4"]
 radius = 6.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(0.5, 0.5)
+[node name="Duck" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_vfwxs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

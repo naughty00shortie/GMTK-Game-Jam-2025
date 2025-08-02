@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5oiq7uxp47sr"]
-
-[ext_resource type="Texture2D" path="res://hydrationnation/assets/tiels/grassField.png" id="1_bdj5i"]
+[gd_scene load_steps=2 format=3 uid="uid://c5oiq7uxp47sr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4qn"]
 size = Vector2(31, 32)
@@ -13,4 +11,3 @@ shape = SubResource("RectangleShape2D_tv4qn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(27, 7)
-texture = ExtResource("1_bdj5i")

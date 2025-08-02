@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbjq67fcy2v0s"]
+
+[ext_resource type="Script" uid="uid://bqqf1qtuuqksf" path="res://hydrationnation/scripts/GameRunner.gd" id="1_pc8k0"]
+
+[node name="GlobalGameRunner" type="Node2D"]
+position = Vector2(5, 5)
+script = ExtResource("1_pc8k0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+offset_left = 19.0
+offset_top = 14.0
+offset_right = 59.0
+offset_bottom = 37.0
+scale = Vector2(1.3512, 1.24)
