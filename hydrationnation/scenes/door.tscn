@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://csrrsw6vcer2m"]
+[gd_scene load_steps=4 format=3 uid="uid://csrrsw6vcer2m"]
 
-[ext_resource type="Script" uid="uid://f0duooo0oxth" path="res://hydrationnation/scripts/door.gd" id="1_sld5e"]
+[ext_resource type="Script" uid="uid://b7d8dj7lgpo3" path="res://hydrationnation/scripts/door.gd" id="1_sld5e"]
+[ext_resource type="Texture2D" uid="uid://77rajkjqppyf" path="res://Screenshot 2025-07-31 203459.png" id="2_xxx1h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxx1h"]
 
@@ -11,5 +12,10 @@ script = ExtResource("1_sld5e")
 shape = SubResource("RectangleShape2D_xxx1h")
 
 [node name="spawn" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.0625011, -0.125)
+scale = Vector2(0.0776367, 0.081)
+texture = ExtResource("2_xxx1h")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

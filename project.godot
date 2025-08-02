@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="HydrationNation"
-run/main_scene="res://hydrationnation/scenes/game_world.tscn"
+run/main_scene="res://hydrationnation/scenes/main_game_world.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[global_group]
+
+player=""
 
 [input]
 
