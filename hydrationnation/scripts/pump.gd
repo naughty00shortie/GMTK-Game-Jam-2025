@@ -2,6 +2,7 @@ extends Node2D
 signal pumped
 
 @onready var animator = $AnimatedSprite2D
+# @onready var prompt_label = $Label
 var player_near := false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
