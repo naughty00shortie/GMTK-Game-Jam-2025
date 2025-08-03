@@ -34,6 +34,10 @@ func _on_timer_timeout():
 func set_item_state(item_name: String, state: bool):
 	has_fishing_rod = false
 	has_sword = false
+	if item_name == "jam":
+		has_jam = true
+	else:
+		has_jam = false
 	match item_name:
 		"fishing_rod": has_fishing_rod = state
 		"sword": has_sword = state

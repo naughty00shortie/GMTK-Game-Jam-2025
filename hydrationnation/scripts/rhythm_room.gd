@@ -23,6 +23,11 @@ func _ready() -> void:
 func _on_note_hit(note: Area2D) -> void:
 	score += 100
 	scoreLabel.text = str(score)
+	if score > 20000:
+				var sword_scene = preload("res://hydrationnation/scenes/jam_pick_up.tscn")
+				var sword_instance = sword_scene.instantiate()
+				sword_instance.position = Vector2(-80.0, 295.0)
+				get_tree().current_scene.add_child(sword_instance)
 
 func _on_score_timer() -> void:
 	print("Current score:", score)
