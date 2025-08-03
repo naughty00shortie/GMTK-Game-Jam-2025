@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://0e3sn1mtcdmv"]
+[gd_scene load_steps=28 format=4 uid="uid://25smtjgqyrmv"]
 
 [ext_resource type="PackedScene" uid="uid://csrrsw6vcer2m" path="res://hydrationnation/scenes/door.tscn" id="1_pmcog"]
 [ext_resource type="Texture2D" uid="uid://dxrsixqh45a1c" path="res://hydrationnation/assets/tiles/Dirt.png" id="2_x7dtj"]
@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c5p1gavk30icu" path="res://hydrationnation/assets/tiles/PathUpEdge.png" id="11_xu7aa"]
 [ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="12_n7vgh"]
 [ext_resource type="Texture2D" uid="uid://ccatt8i0ngmty" path="res://icon.svg" id="13_1lp4w"]
-[ext_resource type="Script" uid="uid://qxoadr2oe4vt" path="res://hydrationnation/scripts/note_spawner.gd" id="14_jl67d"]
-[ext_resource type="Script" uid="uid://db8001gtbyvsx" path="res://hydrationnation/scripts/Hitbar.gd" id="15_lmf2l"]
+[ext_resource type="Script" uid="uid://blexg66aivxia" path="res://hydrationnation/scripts/note_spawner.gd" id="14_jl67d"]
+[ext_resource type="Script" uid="uid://hlwtxoy1mk75" path="res://hydrationnation/scripts/Hitbar.gd" id="15_lmf2l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bn3t"]
 texture = ExtResource("2_x7dtj")

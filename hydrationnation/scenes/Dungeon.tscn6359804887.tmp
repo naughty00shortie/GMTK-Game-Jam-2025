@@ -6,27 +6,12 @@
 
 [node name="Dungeon" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(435, 415)
-zoom = Vector2(4, 4)
-
 [node name="door" parent="." instance=ExtResource("2_363sx")]
-position = Vector2(315, 408)
+position = Vector2(559, 415)
 destination_level = "res://hydrationnation/scenes/main_game_world.tscn"
 
-[node name="Duck" parent="." instance=ExtResource("1_363sx")]
-position = Vector2(350, 441)
-
 [node name="PirateEnemy" parent="." instance=ExtResource("3_117jx")]
-position = Vector2(492, 360)
+position = Vector2(774, 400)
 
-[node name="PirateEnemy2" parent="." instance=ExtResource("3_117jx")]
-position = Vector2(542, 380)
-pirate_type = 2
-
-[node name="PirateEnemy3" parent="." instance=ExtResource("3_117jx")]
-position = Vector2(545, 449)
-
-[node name="PirateEnemy4" parent="." instance=ExtResource("3_117jx")]
-position = Vector2(497, 474)
-pirate_type = 2
+[node name="Duck" parent="." instance=ExtResource("1_363sx")]
+position = Vector2(435, 416)

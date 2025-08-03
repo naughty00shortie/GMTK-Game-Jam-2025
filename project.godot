@@ -11,18 +11,19 @@ config_version=5
 [application]
 
 config/name="HydrationNation"
-run/main_scene="res://hydrationnation/scenes/main_game_world.tscn"
+run/main_scene="uid://b3jnyyo11i3gy"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalAudioStreamPlayer="*res://hydrationnation/scenes/audio_stream_player.gd"
 GlobalGameRunner="*res://hydrationnation/scenes/global_game_runner.tscn"
+GlobalAudioStreamPlayer="*res://hydrationnation/scenes/audio_stream_player.gd"
 
 [global_group]
 
 player=""
+enemies=""
 
 [input]
 
@@ -84,6 +85,11 @@ hit_3={
 hit_4={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
+]
+}
+fish={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://7qjs04vmtn4p"]
 
-[ext_resource type="Texture2D" uid="uid://d2qecl3ha3n4s" path="res://hydrationnation/assets/sprites/pump.png" id="1_qxrwp"]
-[ext_resource type="Script" uid="uid://crtqbtpo3hily" path="res://hydrationnation/scripts/pump.gd" id="1_wqnky"]
+[ext_resource type="Texture2D" uid="uid://c4kkk5ypx6log" path="res://hydrationnation/assets/sprites/pump.png" id="1_qxrwp"]
+[ext_resource type="Script" uid="uid://b2my8kxh5gcv1" path="res://hydrationnation/scripts/pump.gd" id="1_wqnky"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqnky"]
 atlas = ExtResource("1_qxrwp")

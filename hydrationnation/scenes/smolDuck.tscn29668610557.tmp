@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3 uid="uid://doojfslomi3h8"]
+[gd_scene load_steps=139 format=3 uid="uid://doojfslomi3h8"]
 
 [ext_resource type="Texture2D" uid="uid://bbdlfwebglwq0" path="res://hydrationnation/assets/sprites/duck/animation/down_idle.png" id="1_uv0oh"]
 [ext_resource type="Script" uid="uid://droe5h4o8sl3a" path="res://hydrationnation/scripts/Player.gd" id="1_vfwxs"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://beyu56c4fg3ey" path="res://hydrationnation/assets/sprites/objects/animation/sword_up_movet.png" id="5_uv2qg"]
 [ext_resource type="Texture2D" uid="uid://b5hkuadwx2j68" path="res://hydrationnation/assets/sprites/objects/animation/sword_horizontal_move.png" id="6_wmpxq"]
 [ext_resource type="Texture2D" uid="uid://1eb372emithq" path="res://hydrationnation/assets/sprites/duck/animation/duck_attack.png" id="7_l5nsb"]
-[ext_resource type="Texture2D" uid="uid://qduabg6pj30" path="res://hydrationnation/assets/tiles/All_Fire_Bullet_Pixel_16x16_00.png" id="10_wmpxq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjoku"]
 atlas = ExtResource("2_6gxv4")
@@ -295,7 +294,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"sword_attack",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -324,7 +323,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"sword_idle_down",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -414,7 +413,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"sword_move_down",
-"speed": 20.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -443,7 +442,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"sword_move_up",
-"speed": 20.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -472,7 +471,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"sword_walk_horizontal",
-"speed": 20.0
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wn48j"]
@@ -518,30 +517,6 @@ region = Rect2(576, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhmr2"]
 atlas = ExtResource("7_l5nsb")
 region = Rect2(640, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jdqo"]
-atlas = ExtResource("10_wmpxq")
-region = Rect2(176, 288, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8vabq"]
-atlas = ExtResource("10_wmpxq")
-region = Rect2(192, 288, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fp1g4"]
-atlas = ExtResource("10_wmpxq")
-region = Rect2(208, 288, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7nw3b"]
-atlas = ExtResource("10_wmpxq")
-region = Rect2(224, 288, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g7oje"]
-atlas = ExtResource("10_wmpxq")
-region = Rect2(240, 288, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rw83i"]
-atlas = ExtResource("10_wmpxq")
-region = Rect2(256, 288, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_du8vh"]
 atlas = ExtResource("1_uv0oh")
@@ -773,30 +748,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6jdqo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8vabq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fp1g4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7nw3b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g7oje")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rw83i")
-}],
-"loop": false,
-"name": &"explode",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -979,29 +931,19 @@ radius = 6.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_du8vh"]
 bg_color = Color(0.880105, 0, 0.156729, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv2qg"]
-size = Vector2(53.3333, 46.6667)
-
-[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_wmpxq"]
-
 [node name="Duck" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.3, 0.3)
-collision_mask = 10
 script = ExtResource("1_vfwxs")
-attack_duration = 1.0
 
 [node name="ObjectAnimator2D" type="AnimatedSprite2D" parent="."]
-z_index = 3
 sprite_frames = SubResource("SpriteFrames_ivh1l")
-animation = &"sword_attack"
-frame_progress = 0.0186905
+animation = &"sword_idle_side"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_ghr73")
-animation = &"explode"
-frame = 5
-frame_progress = 1.0
+animation = &"attack"
+frame_progress = 0.700874
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
@@ -1020,17 +962,3 @@ show_percentage = false
 [node name="FishingRod" type="Sprite2D" parent="."]
 z_index = 2
 texture = ExtResource("5_du8vh")
-
-[node name="SwordHitbox" type="Area2D" parent="."]
-position = Vector2(-50, 6.66667)
-scale = Vector2(2.08342, -0.585403)
-collision_layer = 128
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
-position = Vector2(26.6667, 0)
-shape = SubResource("RectangleShape2D_uv2qg")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamWAV_wmpxq")
-volume_db = 3.319
