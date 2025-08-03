@@ -17,12 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalAudioStreamPlayer="*res://hydrationnation/scenes/audio_stream_player.gd"
 GlobalGameRunner="*res://hydrationnation/scenes/global_game_runner.tscn"
+GlobalAudioStreamPlayer="*res://hydrationnation/scenes/audio_stream_player.gd"
 
 [global_group]
 
 player=""
+enemies=""
 
 [input]
 
