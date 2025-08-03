@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://deb0qnhw7phk5"]
+
+[ext_resource type="Script" uid="uid://c14kpfetpb0cy" path="res://hydrationnation/scripts/pick_up.gd" id="1_8horl"]
+
+[resource]
+script = ExtResource("1_8horl")
+sprite_path = ""
