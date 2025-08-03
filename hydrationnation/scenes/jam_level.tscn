@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b8vlap6ow43c6"]
+[gd_scene load_steps=21 format=4 uid="uid://b8vlap6ow43c6"]
 
 [ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="1_1ge7h"]
 [ext_resource type="PackedScene" uid="uid://dmdvwhllu2bgc" path="res://hydrationnation/scenes/Jam.tscn" id="1_7js30"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://7qjs04vmtn4p" path="res://hydrationnation/scenes/pump.tscn" id="6_hcyoy"]
 [ext_resource type="AudioStream" uid="uid://ownj3mglqf6o" path="res://hydrationnation/audio/pump_up_the_jam.mp3" id="7_hcyoy"]
 [ext_resource type="Script" uid="uid://b6diw6rxmvf68" path="res://hydrationnation/scenes/jam_barrier.gd" id="10_t7rg5"]
-[ext_resource type="PackedScene" uid="uid://bau72sgcqftv4" path="res://hydrationnation/scenes/fishing_rod_pickup.tscn" id="11_pm6o0"]
+[ext_resource type="PackedScene" path="res://hydrationnation/scenes/item_pickup.tscn" id="11_pm6o0"]
+[ext_resource type="Texture2D" uid="uid://dtn81ow6kcesk" path="res://hydrationnation/assets/sprites/rod.png" id="12_lkhfg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7rg5"]
 texture = ExtResource("3_7g6mj")
@@ -330,9 +331,11 @@ position = Vector2(-153, 77)
 shape = SubResource("SegmentShape2D_dokjs")
 
 [node name="Area2D" parent="." instance=ExtResource("11_pm6o0")]
-position = Vector2(-117, -65)
-collision_layer = 2
-collision_mask = 14
+position = Vector2(-119, -70)
+item_name = "fishing_rod"
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("12_lkhfg")
 
 [connection signal="enable_jam" from="." to="growingObject" method="_on_jam_level_enable_jam"]
 [connection signal="jam_is_pumped" from="growingObject" to="." method="_on_growing_object_jam_is_pumped"]
