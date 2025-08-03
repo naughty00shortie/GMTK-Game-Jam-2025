@@ -118,3 +118,4 @@ destination_level = "res://hydrationnation/scenes/jam_level.tscn"
 
 [node name="Duck" parent="." instance=ExtResource("12_21irx")]
 position = Vector2(-90, -1)
+attack_duration = 0.5

@@ -100,7 +100,7 @@ func update_fishing_rod_orientation():
 			object_animator.flip_h = false
 			fishing_rod.flip_h = false
 			fishing_rod.z_index = 2
-			fishing_rod.position = Vector2(32, -8)
+			fishing_rod.position = Vector2(16, -8)
 	else:
 		if last_direction.y < 0:
 			fishing_rod.flip_h = true
@@ -111,7 +111,7 @@ func update_fishing_rod_orientation():
 			fishing_rod.flip_h = false
 			object_animator.flip_h = false
 			fishing_rod.z_index = 2
-			fishing_rod.position = Vector2(32, -8)
+			fishing_rod.position = Vector2(16, -8)
 
 func attack() -> void:
 	if is_attacking:
@@ -181,7 +181,7 @@ func _ready():
 	object_animator.visible = has_sword
 	if get_tree().current_scene != null and get_tree().current_scene.scene_file_path == "res://hydrationnation/scenes/Dungeon.tscn":
 		equip_sword()
-	#fishing_rod.animation_finished.connect(_on_casting_animation_finished)
+	fishing_rod.animation_finished.connect(_on_casting_animation_finished)
 
 func _on_casting_animation_finished():
 	if fishing_rod.animation == "cast":
