@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalGameRunner="*res://hydrationnation/scenes/global_game_runner.tscn"
+NoteSpawner="*res://hydrationnation/scripts/note_spawner.gd"
 GlobalAudioStreamPlayer="*res://hydrationnation/scenes/audio_stream_player.gd"
 
 [global_group]

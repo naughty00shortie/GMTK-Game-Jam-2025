@@ -2,6 +2,14 @@ extends Node2D
 
 @onready var timer = $Timer
 @onready var timerLabel = $CanvasLayer/TimerLabel
+@onready var scoreLabel  = $CanvasLayer/ScoreLabel
+@onready var hitbars     = [
+	$HitBar0,
+	$HitBar1,
+	$HitBar2,
+	$HitBar3,
+	$HitBar4,
+]
 
 func _ready():
 	GlobalAudioStreamPlayer.play_playlist()
