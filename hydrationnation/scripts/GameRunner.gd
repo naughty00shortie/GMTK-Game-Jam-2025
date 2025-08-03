@@ -11,6 +11,8 @@ extends Node2D
 	$HitBar4,
 ]
 
+var has_fishing_rod: bool = true;
+
 func _ready():
 	GlobalAudioStreamPlayer.play_playlist()
 	print("yeet")

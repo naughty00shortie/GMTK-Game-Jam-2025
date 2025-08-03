@@ -4,12 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dmdvwhllu2bgc" path="res://hydrationnation/scenes/Jam.tscn" id="1_7js30"]
 [ext_resource type="Script" path="res://hydrationnation/scenes/jam_level_manager.gd" id="1_44pl3"]
 [ext_resource type="PackedScene" uid="uid://csrrsw6vcer2m" path="res://hydrationnation/scenes/door.tscn" id="2_aou4s"]
-[ext_resource type="Texture2D" uid="uid://rya7xq8pbqkw" path="res://hydrationnation/assets/sprites/cord.png" id="2_d4kaf"]
-[ext_resource type="Texture2D" uid="uid://br1od2707w6df" path="res://hydrationnation/assets/tiles/pickup_tilemap_packed.png" id="3_7g6mj"]
+[ext_resource type="Texture2D" uid="uid://dpa2o5bodtfh4" path="res://hydrationnation/assets/sprites/cord.png" id="2_d4kaf"]
+[ext_resource type="Texture2D" uid="uid://ccp1xofrbcy7u" path="res://hydrationnation/assets/tiles/pickup_tilemap_packed.png" id="3_7g6mj"]
 [ext_resource type="PackedScene" uid="uid://c1kh4khok4asq" path="res://hydrationnation/scenes/tile_map_layer.tscn" id="4_7u7f5"]
-[ext_resource type="PackedScene" uid="uid://7qjs04vmtn4p" path="res://hydrationnation/scenes/pump.tscn" id="6_hcyoy"]
-[ext_resource type="AudioStream" uid="uid://ownj3mglqf6o" path="res://hydrationnation/audio/pump_up_the_jam.mp3" id="7_hcyoy"]
+[ext_resource type="PackedScene" path="res://hydrationnation/scenes/pump.tscn" id="6_hcyoy"]
+[ext_resource type="AudioStream" uid="uid://b7vnbpu66qh4w" path="res://hydrationnation/audio/pump_up_the_jam.mp3" id="7_hcyoy"]
 [ext_resource type="Script" path="res://hydrationnation/scenes/jam_barrier.gd" id="10_t7rg5"]
+[ext_resource type="PackedScene" path="res://hydrationnation/scenes/fishing_rod_pickup.tscn" id="11_pm6o0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7rg5"]
 texture = ExtResource("3_7g6mj")
@@ -241,16 +242,11 @@ sources/0 = SubResource("TileSetAtlasSource_t7rg5")
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_lkhfg"]
 b = Vector2(0, 25)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_aah2r"]
-a = Vector2(-196, 0)
-b = Vector2(72, 0)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_7g6mj"]
-a = Vector2(145, 10)
-b = Vector2(-126, 10)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7rg5"]
 size = Vector2(32, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm6o0"]
+size = Vector2(269, 27)
 
 [node name="JamLevel" type="Node2D"]
 script = ExtResource("1_44pl3")
@@ -294,6 +290,8 @@ stream = ExtResource("7_hcyoy")
 autoplay = true
 
 [node name="boundries" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 14
 
 [node name="jamBarrier" type="CollisionShape2D" parent="boundries"]
 position = Vector2(37, -79)
@@ -301,17 +299,18 @@ shape = SubResource("SegmentShape2D_lkhfg")
 debug_color = Color(0.778824, 0.230172, 0.912085, 0.42)
 script = ExtResource("10_t7rg5")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="boundries"]
-position = Vector2(38, -31)
-shape = SubResource("SegmentShape2D_aah2r")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="boundries"]
-position = Vector2(-32, -67)
-shape = SubResource("SegmentShape2D_7g6mj")
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="boundries"]
 position = Vector2(145, -45)
 shape = SubResource("RectangleShape2D_t7rg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries"]
+position = Vector2(-24.5, -44.5)
+shape = SubResource("RectangleShape2D_pm6o0")
+
+[node name="Area2D" parent="." instance=ExtResource("11_pm6o0")]
+position = Vector2(-117, -65)
+collision_layer = 2
+collision_mask = 14
 
 [connection signal="jam_is_pumped" from="growingObject" to="." method="_on_growing_object_jam_is_pumped"]
 [connection signal="jam_is_pumped" from="growingObject" to="boundries/jamBarrier" method="_on_growing_object_jam_is_pumped"]
