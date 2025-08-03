@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dmdvwhllu2bgc" path="res://hydrationnation/scenes/Jam.tscn" id="1_7js30"]
 [ext_resource type="Script" path="res://hydrationnation/scenes/jam_level_manager.gd" id="1_44pl3"]
 [ext_resource type="PackedScene" uid="uid://csrrsw6vcer2m" path="res://hydrationnation/scenes/door.tscn" id="2_aou4s"]
-[ext_resource type="Texture2D" uid="uid://rya7xq8pbqkw" path="res://hydrationnation/assets/sprites/cord.png" id="2_d4kaf"]
-[ext_resource type="Texture2D" uid="uid://br1od2707w6df" path="res://hydrationnation/assets/tiles/pickup_tilemap_packed.png" id="3_7g6mj"]
+[ext_resource type="Texture2D" uid="uid://dpa2o5bodtfh4" path="res://hydrationnation/assets/sprites/cord.png" id="2_d4kaf"]
+[ext_resource type="Texture2D" uid="uid://ccp1xofrbcy7u" path="res://hydrationnation/assets/tiles/pickup_tilemap_packed.png" id="3_7g6mj"]
 [ext_resource type="PackedScene" uid="uid://c1kh4khok4asq" path="res://hydrationnation/scenes/tile_map_layer.tscn" id="4_7u7f5"]
-[ext_resource type="PackedScene" uid="uid://7qjs04vmtn4p" path="res://hydrationnation/scenes/pump.tscn" id="6_hcyoy"]
-[ext_resource type="AudioStream" uid="uid://ownj3mglqf6o" path="res://hydrationnation/audio/pump_up_the_jam.mp3" id="7_hcyoy"]
+[ext_resource type="PackedScene" path="res://hydrationnation/scenes/pump.tscn" id="6_hcyoy"]
+[ext_resource type="AudioStream" uid="uid://b7vnbpu66qh4w" path="res://hydrationnation/audio/pump_up_the_jam.mp3" id="7_hcyoy"]
 [ext_resource type="Script" path="res://hydrationnation/scenes/jam_barrier.gd" id="10_t7rg5"]
-[ext_resource type="PackedScene" uid="uid://bau72sgcqftv4" path="res://hydrationnation/scenes/fishing_rod_pickup.tscn" id="11_pm6o0"]
+[ext_resource type="PackedScene" path="res://hydrationnation/scenes/fishing_rod_pickup.tscn" id="11_pm6o0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7rg5"]
 texture = ExtResource("3_7g6mj")
