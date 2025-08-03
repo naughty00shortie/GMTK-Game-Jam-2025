@@ -131,27 +131,29 @@ func attack() -> void:
 	is_attacking = false
 
 func handle_fishing_input():
-	speed = 0
-	match fishing_state:
-		FishingState.IDLE:
-			fishing_rod.play("cast")
-		FishingState.WAITING:
-			if $Exclamation.visible:
-				fishing_rod.play("reel")
-				fishing_state = FishingState.REELING
-				start_catch_timer()
-			else:
+	if GlobalGameRunner.has_fishing_rod:
+		speed = 0
+		match fishing_state:
+			FishingState.IDLE:
+				fishing_rod.play("cast")
+			FishingState.WAITING:
+				if $Exclamation.visible:
+					fishing_rod.play("reel")
+					fishing_state = FishingState.REELING
+					start_catch_timer()
+				else:
+					fishing_rod.play("catch")
+					speed = 50
+					fishing_rod.frame = 0
+					fishing_state = FishingState.IDLE
+			FishingState.REELING:
+				if $Exclamation.visible:
+					print("You got a fish! (give duck sword)")
+					
 				fishing_rod.play("catch")
 				speed = 50
 				fishing_rod.frame = 0
 				fishing_state = FishingState.IDLE
-		FishingState.REELING:
-			if $Exclamation.visible:
-				print("You got a fish!")
-			fishing_rod.play("catch")
-			speed = 50
-			fishing_rod.frame = 0
-			fishing_state = FishingState.IDLE
 
 func take_damage(damage: int):
 	print("taking damage: " + str(damage))
@@ -210,7 +212,7 @@ func start_catch_timer():
 
 func update_rod_visibility():
 	var current_scene = get_tree().current_scene
-	$FishingRod.visible = current_scene.name == "FishingRoom"
+	$FishingRod.visible = current_scene.name == "FishingRoom" && GlobalGameRunner.has_fishing_rod
 
 func _on_SwordHitbox_body_entered(body):
 	if is_attacking and has_sword and body.is_in_group("enemies"):

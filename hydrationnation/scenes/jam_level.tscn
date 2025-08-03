@@ -279,7 +279,6 @@ destination_level = "res://hydrationnation/scenes/main_game_world.tscn"
 
 [node name="Duck" parent="." instance=ExtResource("1_1ge7h")]
 position = Vector2(-3.8147e-06, 40)
-attack_duration = 0.5
 
 [node name="pump" parent="." instance=ExtResource("6_hcyoy")]
 position = Vector2(-78, -16)

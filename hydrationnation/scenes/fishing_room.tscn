@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=4 uid="uid://b5qjsajfm3600"]
+[gd_scene load_steps=6 format=4 uid="uid://b5qjsajfm3600"]
 
 [ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="1_5k16o"]
 [ext_resource type="PackedScene" uid="uid://csrrsw6vcer2m" path="res://hydrationnation/scenes/door.tscn" id="2_wsese"]
 [ext_resource type="PackedScene" uid="uid://c1kh4khok4asq" path="res://hydrationnation/scenes/tile_map_layer.tscn" id="3_wsese"]
 [ext_resource type="Texture2D" uid="uid://0cq2cpjuqtj7" path="res://hydrationnation/assets/sprites/icons/exclamation.png" id="4_suwl1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_suwl1"]
+load_path = "res://.godot/imported/swordfish.png-fc92c73f3a691d4fd18a2842eaf49793.ctex"
 
 [node name="FishingRoom" type="Node2D"]
 
@@ -15,6 +18,13 @@ visible = false
 position = Vector2(-160, -56.6665)
 scale = Vector2(1.77083, 1.5625)
 texture = ExtResource("4_suwl1")
+
+[node name="Swordfish" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+z_index = 3
+position = Vector2(-55, 3.33337)
+scale = Vector2(1.92708, 1.875)
+texture = SubResource("CompressedTexture2D_suwl1")
 
 [node name="door" parent="." instance=ExtResource("2_wsese")]
 position = Vector2(655, 398)
