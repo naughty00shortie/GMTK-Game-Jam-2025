@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctnvn7vxlt4ca"]
+
+[ext_resource type="Script" uid="uid://b2qjow60iftk" path="res://hydrationnation/scripts/item_pickup.gd" id="1_n0k71"]
+[ext_resource type="Texture2D" uid="uid://xyivnru5ktxq" path="res://hydrationnation/assets/sprites/objects/sword_static-export.png" id="2_e60gx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e60gx"]
+
+[node name="SwordPickUp" type="Area2D"]
+script = ExtResource("1_n0k71")
+item_name = "sword"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e60gx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.356329, 0.406)
+texture = ExtResource("2_e60gx")

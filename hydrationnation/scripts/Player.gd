@@ -156,7 +156,10 @@ func handle_fishing_input():
 				fishing_state = FishingState.IDLE
 		FishingState.REELING:
 			if $Exclamation.visible:
-				print("You got a fish! (give duck sword)")
+				var sword_scene = preload("res://hydrationnation/scenes/sword_pick_up.tscn")
+				var sword_instance = sword_scene.instantiate()
+				sword_instance.position = Vector2(555.0, 446.0)
+				get_tree().current_scene.add_child(sword_instance)
 			fishing_rod.play("catch")
 			speed = 50
 			fishing_rod.frame = 0
