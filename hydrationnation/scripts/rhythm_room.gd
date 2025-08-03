@@ -40,3 +40,6 @@ func _try_hit(lane_idx: int) -> void:
 		var note = bar.notes_in_zone.pop_front()
 		note.queue_free()
 		_on_note_hit(note)
+
+func _exit_tree():
+	GlobalAudioStreamPlayer.play_playlist()

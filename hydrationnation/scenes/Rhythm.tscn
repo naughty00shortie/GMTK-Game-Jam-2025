@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://0e3sn1mtcdmv"]
+[gd_scene load_steps=38 format=4 uid="uid://0e3sn1mtcdmv"]
 
 [ext_resource type="Script" uid="uid://d0xavf6a6i15q" path="res://hydrationnation/scripts/rhythm_room.gd" id="1_mf21t"]
 [ext_resource type="PackedScene" uid="uid://csrrsw6vcer2m" path="res://hydrationnation/scenes/door.tscn" id="1_pmcog"]
@@ -17,7 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="12_n7vgh"]
 [ext_resource type="Script" uid="uid://qxoadr2oe4vt" path="res://hydrationnation/scripts/note_spawner.gd" id="14_jl67d"]
 [ext_resource type="Script" uid="uid://db8001gtbyvsx" path="res://hydrationnation/scripts/Hitbar.gd" id="15_lmf2l"]
+[ext_resource type="Texture2D" uid="uid://b2vvo7p1jbonu" path="res://hydrationnation/assets/sprites/letters/Sprite-z.png" id="19_a8rc0"]
 [ext_resource type="Script" uid="uid://dtltduxkurij4" path="res://hydrationnation/scenes/audio_stream_player.gd" id="19_buxrp"]
+[ext_resource type="Texture2D" uid="uid://by6rgf030hw7r" path="res://hydrationnation/assets/sprites/letters/Sprite-x.png" id="20_uhwt2"]
+[ext_resource type="Texture2D" uid="uid://cj04xkanr76tj" path="res://hydrationnation/assets/sprites/letters/Sprite-c.png" id="21_wdhla"]
+[ext_resource type="Texture2D" uid="uid://f0j5k1djvob1" path="res://hydrationnation/assets/sprites/letters/Sprite-v.png" id="22_oeo8b"]
+[ext_resource type="Texture2D" uid="uid://btyqthtge6trf" path="res://hydrationnation/assets/sprites/letters/Sprite-b.png" id="23_pw3cx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bn3t"]
 texture = ExtResource("2_x7dtj")
@@ -500,3 +505,23 @@ offset_right = 571.0
 offset_bottom = 52.0
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Z" type="Sprite2D" parent="."]
+position = Vector2(-128, 154)
+texture = ExtResource("19_a8rc0")
+
+[node name="X" type="Sprite2D" parent="."]
+position = Vector2(-64, 154)
+texture = ExtResource("20_uhwt2")
+
+[node name="C" type="Sprite2D" parent="."]
+position = Vector2(0, 154)
+texture = ExtResource("21_wdhla")
+
+[node name="V" type="Sprite2D" parent="."]
+position = Vector2(64, 154)
+texture = ExtResource("22_oeo8b")
+
+[node name="B" type="Sprite2D" parent="."]
+position = Vector2(128, 154)
+texture = ExtResource("23_pw3cx")
