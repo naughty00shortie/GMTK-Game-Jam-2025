@@ -15,72 +15,41 @@ var is_attacking := false
 @onready var animator = $AnimatedSprite2D
 @onready var fishing_rod = $FishingRod
 @onready var object_animator = $ObjectAnimator2D
-
-#Audio stuff:
 @onready var audioPlayer = $AudioStreamPlayer2D
-enum FishingState { IDLE, CASTING, WAITING, REELING }
-var fishing_state = FishingState.IDLE
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-func _physics_process(delta: float) -> void:
-
+# Audio
 const heavy_quack_sfx = "res://hydrationnation/audio/soundEffects/quack.wav"
 const sword_sfx = "res://hydrationnation/audio/soundEffects/sword.wav"
 const light_quack_sfx = "res://hydrationnation/audio/soundEffects/lightQuack.wav"
 
+# Fishing
+enum FishingState { IDLE, CASTING, WAITING, REELING }
+var fishing_state = FishingState.IDLE
+
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2.ZERO
-
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
 	if Input.is_action_just_pressed("attack") and has_sword:
 		attack()
 
-	# Update last direction if moving
+	if Input.is_action_just_pressed("fish"):
+		handle_fishing_input()
+
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
 		last_direction = direction
 
-	# Handle Animations
 	handle_animation(direction)
-
-	# Movement
 	velocity = direction * speed
 	move_and_slide()
 
 func handle_animation(direction: Vector2):
-	# Disable sword visuals if sword is not equipped
 	object_animator.visible = has_sword
 
-	# Handle sprite flipping and rod positioning
-	if abs(last_direction.x) > abs(last_direction.y):
-		# Horizontal Facing
-		if last_direction.x < 0:
-			animator.flip_h = true
-			object_animator.flip_h = true
-			fishing_rod.flip_h = true
-			fishing_rod.z_index = 0
-			fishing_rod.position = Vector2(-14, -12)
-		else:
-			animator.flip_h = false
-			object_animator.flip_h = false
-			fishing_rod.flip_h = false
-			fishing_rod.z_index = 2
-			fishing_rod.position = Vector2(32, -8)
-	else:
-		# Vertical Facing
-		if last_direction.y < 0:
-			fishing_rod.flip_h = true
-			object_animator.flip_h = false
-			fishing_rod.z_index = 0
-			fishing_rod.position = Vector2(-14, -12)
-		else:
-			fishing_rod.flip_h = false
-			object_animator.flip_h = false
-			fishing_rod.z_index = 2
-			fishing_rod.position = Vector2(32, -8)
+	# Sprite flipping and rod positioning
+	update_fishing_rod_orientation()
 
 	# Attack takes priority
 	if is_attacking and has_sword:
@@ -88,50 +57,22 @@ func handle_animation(direction: Vector2):
 		object_animator.play("sword_attack")
 		return
 
-	# Walk animations
+	# Walk / Idle animations
 	if direction != Vector2.ZERO:
 		if abs(direction.x) > abs(direction.y):
 			animator.play("walk_horizontal")
 			if has_sword:
 				object_animator.play("sword_walk_horizontal")
 		else:
-		#moving horizontally
-		if abs(direction.x) > abs(direction.y):
-			animator.play("walk_horizontal")
-
-			#moving left
-			if (direction.x < 0):
-				animator.flip_h = true;
-				fishing_rod.flip_h = true;
-				fishing_rod.z_index = 0;
-				fishing_rod.position = Vector2(-14, -12)
-
-			#moving right
-			else:
-				animator.flip_h = false;
-				fishing_rod.flip_h = false;
-				fishing_rod.z_index = 2;
-				fishing_rod.position = Vector2(-1, 0)
-
-		#moving vertically
-		else:
-
-			#moving down
 			if direction.y > 0:
 				animator.play("walk_down")
 				if has_sword:
 					object_animator.play("sword_move_down")
-				fishing_rod.flip_h = false;
-				fishing_rod.z_index = 2;
-				fishing_rod.position = Vector2(-1, 0)
-
-			#moving up
 			else:
 				animator.play("walk_up")
 				if has_sword:
 					object_animator.play("sword_move_up")
 	else:
-		# Idle Animations
 		if abs(last_direction.x) > abs(last_direction.y):
 			animator.play("idle_horizontal")
 			if has_sword:
@@ -146,59 +87,71 @@ func handle_animation(direction: Vector2):
 				if has_sword:
 					object_animator.play("sword_idle_up")
 
-func attack() -> void:
-	if is_attacking or not has_sword:
-		return
-				fishing_rod.flip_h = true;
+func update_fishing_rod_orientation():
+	if abs(last_direction.x) > abs(last_direction.y):
+		if last_direction.x < 0:
+			animator.flip_h = true
+			object_animator.flip_h = true
+			fishing_rod.flip_h = true
+			fishing_rod.z_index = 0
+			fishing_rod.position = Vector2(-14, -12)
+		else:
+			animator.flip_h = false
+			object_animator.flip_h = false
+			fishing_rod.flip_h = false
+			fishing_rod.z_index = 2
+			fishing_rod.position = Vector2(32, -8)
+	else:
+		if last_direction.y < 0:
+			fishing_rod.flip_h = true
+			object_animator.flip_h = false
+			fishing_rod.z_index = 0
+			fishing_rod.position = Vector2(-14, -12)
+		else:
+			fishing_rod.flip_h = false
+			object_animator.flip_h = false
+			fishing_rod.z_index = 2
+			fishing_rod.position = Vector2(32, -8)
 
-			#was last moving down
-			else:
-				animator.play("idle_down")
-				fishing_rod.z_index = 2;
-				fishing_rod.flip_h = false;
-				fishing_rod.position = Vector2(-1, 0)
+func attack() -> void:
+	if is_attacking:
+		return
 
 	is_attacking = true
 	print("Attacking...")
-	velocity = direction * speed
-	move_and_slide()
-
-	if Input.is_action_just_pressed("fish"):
-		speed = 0;
-		match fishing_state:
-			FishingState.IDLE:
-				fishing_rod.play("cast")
-			FishingState.WAITING:
-				if $Exclamation.visible:
-					fishing_rod.play("reel")
-					fishing_state = FishingState.REELING
-					start_catch_timer()
-				else:
-					fishing_rod.play("catch")
-					speed = 50;
-					fishing_rod.frame = 0
-					fishing_state = FishingState.IDLE
-			FishingState.REELING:
-
-				if $Exclamation.visible:
-					print("You got a fish!")
-
-				fishing_rod.play("catch")
-				speed = 50;
-				fishing_rod.frame = 0
-				fishing_state = FishingState.IDLE
-
-
 
 	$SwordHitbox.monitoring = true
 
-	await get_tree().create_timer(attack_duration).timeout
-
 	audioPlayer.stream = preload(sword_sfx)
 	audioPlayer.play()
-	
+
+	await get_tree().create_timer(attack_duration).timeout
+
 	$SwordHitbox.monitoring = false
 	is_attacking = false
+
+func handle_fishing_input():
+	speed = 0
+	match fishing_state:
+		FishingState.IDLE:
+			fishing_rod.play("cast")
+		FishingState.WAITING:
+			if $Exclamation.visible:
+				fishing_rod.play("reel")
+				fishing_state = FishingState.REELING
+				start_catch_timer()
+			else:
+				fishing_rod.play("catch")
+				speed = 50
+				fishing_rod.frame = 0
+				fishing_state = FishingState.IDLE
+		FishingState.REELING:
+			if $Exclamation.visible:
+				print("You got a fish!")
+			fishing_rod.play("catch")
+			speed = 50
+			fishing_rod.frame = 0
+			fishing_state = FishingState.IDLE
 
 func take_damage(damage: int):
 	print("taking damage: " + str(damage))
@@ -212,30 +165,23 @@ func take_damage(damage: int):
 		die()
 
 func flash_red():
-	# Instantly set sprite to red
 	$AnimatedSprite2D.modulate = Color(1, 0, 0)
-
-	# Create a tween that fades it back to normal
 	var tween = create_tween()
 	tween.tween_property($AnimatedSprite2D, "modulate", Color(1, 1, 1), 0.3)
 
 func die():
 	pass
-	
+
 func _ready():
 	fishing_rod.frame = 0
 	update_rod_visibility()
 	$HealthBar.visible = false
 	$SwordHitbox.monitoring = false
 	$SwordHitbox.body_entered.connect(_on_SwordHitbox_body_entered)
-
 	object_animator.visible = has_sword
-
 	if get_tree().current_scene != null and get_tree().current_scene.scene_file_path == "res://hydrationnation/scenes/Dungeon.tscn":
 		equip_sword()
-
-
-	fishing_rod.animation_finished.connect(_on_casting_animation_finished)
+	#fishing_rod.animation_finished.connect(_on_casting_animation_finished)
 
 func _on_casting_animation_finished():
 	if fishing_rod.animation == "cast":
@@ -247,34 +193,24 @@ func start_wait_timer():
 	await get_tree().create_timer(3.0).timeout
 	if fishing_state == FishingState.WAITING:
 		$Exclamation.position = fishing_rod.position + Vector2(15, -60)
-		$Exclamation.visible = true;
+		$Exclamation.visible = true
 		await get_tree().create_timer(1).timeout
-		$Exclamation.visible = false;
-
+		$Exclamation.visible = false
 		if fishing_state != FishingState.REELING:
 			fishing_rod.play("catch")
-			speed = 50;
+			speed = 50
 			fishing_rod.frame = 0
 			fishing_state = FishingState.IDLE
 
 func start_catch_timer():
 	await get_tree().create_timer(3.0).timeout
-	$Exclamation.visible = true;
+	$Exclamation.visible = true
 	await get_tree().create_timer(1).timeout
-	$Exclamation.visible = false;
-
-	#if fishing_state != FishingState.REELING:
-			#fishing_rod.play("catch")
-			#speed = 50;
-			#fishing_rod.frame = 0
-			#fishing_state = FishingState.IDLE
+	$Exclamation.visible = false
 
 func update_rod_visibility():
 	var current_scene = get_tree().current_scene
-	if current_scene.name == "FishingRoom":
-		$FishingRod.visible = true
-	else:
-		$FishingRod.visible = false
+	$FishingRod.visible = current_scene.name == "FishingRoom"
 
 func _on_SwordHitbox_body_entered(body):
 	if is_attacking and has_sword and body.is_in_group("enemies"):
