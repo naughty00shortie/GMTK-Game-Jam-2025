@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://b8vlap6ow43c6"]
+[gd_scene load_steps=16 format=4 uid="uid://b8vlap6ow43c6"]
 
 [ext_resource type="PackedScene" uid="uid://doojfslomi3h8" path="res://hydrationnation/scenes/smolDuck.tscn" id="1_1ge7h"]
 [ext_resource type="PackedScene" uid="uid://dmdvwhllu2bgc" path="res://hydrationnation/scenes/Jam.tscn" id="1_7js30"]
@@ -241,16 +241,11 @@ sources/0 = SubResource("TileSetAtlasSource_t7rg5")
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_lkhfg"]
 b = Vector2(0, 25)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_aah2r"]
-a = Vector2(-196, 0)
-b = Vector2(72, 0)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_7g6mj"]
-a = Vector2(145, 10)
-b = Vector2(-126, 10)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7rg5"]
 size = Vector2(32, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm6o0"]
+size = Vector2(269, 27)
 
 [node name="JamLevel" type="Node2D"]
 script = ExtResource("1_44pl3")
@@ -294,6 +289,8 @@ stream = ExtResource("7_hcyoy")
 autoplay = true
 
 [node name="boundries" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 14
 
 [node name="jamBarrier" type="CollisionShape2D" parent="boundries"]
 position = Vector2(37, -79)
@@ -301,17 +298,13 @@ shape = SubResource("SegmentShape2D_lkhfg")
 debug_color = Color(0.778824, 0.230172, 0.912085, 0.42)
 script = ExtResource("10_t7rg5")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="boundries"]
-position = Vector2(38, -31)
-shape = SubResource("SegmentShape2D_aah2r")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="boundries"]
-position = Vector2(-32, -67)
-shape = SubResource("SegmentShape2D_7g6mj")
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="boundries"]
 position = Vector2(145, -45)
 shape = SubResource("RectangleShape2D_t7rg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries"]
+position = Vector2(-24.5, -44.5)
+shape = SubResource("RectangleShape2D_pm6o0")
 
 [connection signal="jam_is_pumped" from="growingObject" to="." method="_on_growing_object_jam_is_pumped"]
 [connection signal="jam_is_pumped" from="growingObject" to="boundries/jamBarrier" method="_on_growing_object_jam_is_pumped"]
