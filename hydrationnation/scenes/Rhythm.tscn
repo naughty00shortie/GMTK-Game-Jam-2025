@@ -528,8 +528,10 @@ texture = ExtResource("23_pw3cx")
 
 [node name="Label" type="Label" parent="."]
 z_index = 5
-offset_left = -273.453
-offset_top = 259.299
-offset_right = -11.4532
-offset_bottom = 282.299
-text = "Score 20000 points to get the jam!"
+offset_left = -233.0
+offset_top = 271.0
+offset_right = 67.0
+offset_bottom = 320.0
+scale = Vector2(0.725726, 0.747187)
+text = "Score over 20000 points to get the jam!
+         It will appear here ->"

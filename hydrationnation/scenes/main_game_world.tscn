@@ -85,10 +85,11 @@ y_sort_enabled = true
 
 [node name="Label" type="Label" parent="."]
 z_index = 5
-offset_left = -99.0613
-offset_top = -22.864
-offset_right = 103.939
-offset_bottom = 26.136
+offset_left = -85.0
+offset_top = -9.0
+offset_right = 118.0
+offset_bottom = 40.0
+scale = Vector2(0.337946, 0.327324)
 theme_override_font_sizes/font_size = 0
 text = "Break the time loop 
 by beating all four rooms!!"

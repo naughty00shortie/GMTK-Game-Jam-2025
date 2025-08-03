@@ -339,10 +339,11 @@ texture = ExtResource("12_lkhfg")
 
 [node name="Label" type="Label" parent="."]
 z_index = 5
-offset_left = 11.896
-offset_top = 38.0701
-offset_right = 263.896
-offset_bottom = 87.0701
+offset_left = -89.0
+offset_top = 2.0
+offset_right = 163.0
+offset_bottom = 51.0
+scale = Vector2(0.421829, 0.409453)
 text = "Press space to
 pump up the jam!"
 

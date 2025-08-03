@@ -30,8 +30,9 @@ tile_map_data = PackedByteArray("AAAIAAkAAAAAAAMAAAAJAAkAAAABAAMAAAAKAAgAAAAFAAM
 
 [node name="Label" type="Label" parent="."]
 z_index = 5
-offset_left = 465.942
-offset_top = 313.252
-offset_right = 694.942
-offset_bottom = 336.252
+offset_left = 454.0
+offset_top = 346.0
+offset_right = 683.0
+offset_bottom = 369.0
+scale = Vector2(0.372769, 0.365963)
 text = "Press F to catch a sword(fish)!"

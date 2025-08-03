@@ -37,10 +37,11 @@ position = Vector2(497, 474)
 pirate_type = 2
 
 [node name="Label" type="Label" parent="."]
-offset_left = 292.908
-offset_top = 435.707
-offset_right = 585.908
-offset_bottom = 510.707
+offset_left = 325.0
+offset_top = 342.0
+offset_right = 618.0
+offset_bottom = 417.0
+scale = Vector2(0.346609, 0.348195)
 text = "Attack with space! 
 Kill the pirates to break
  the time loop!"
