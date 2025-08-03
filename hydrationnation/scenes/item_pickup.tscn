@@ -1,13 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bau72sgcqftv4"]
 
-[ext_resource type="Texture2D" uid="uid://dtn81ow6kcesk" path="res://hydrationnation/assets/sprites/rod.png" id="1_rxje3"]
+[ext_resource type="Script" uid="uid://fngsc2cukqbb" path="res://hydrationnation/scripts/pick_up.gd" id="1_mol6p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a0myg"]
 
 [node name="Area2D" type="Area2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_rxje3")
+script = ExtResource("1_mol6p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a0myg")

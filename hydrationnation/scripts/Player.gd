@@ -6,7 +6,7 @@ class_name Player
 @export var health := 100
 @export var max_health := 100
 @export var has_sword := false
-@export var attack_duration := 0.5
+@export var attack_duration := 1
 
 var attack_power := 10
 var last_direction := Vector2.RIGHT
@@ -131,29 +131,37 @@ func attack() -> void:
 	is_attacking = false
 
 func handle_fishing_input():
-	if GlobalGameRunner.has_fishing_rod:
-		speed = 0
-		match fishing_state:
-			FishingState.IDLE:
-				fishing_rod.play("cast")
-			FishingState.WAITING:
-				if $Exclamation.visible:
-					fishing_rod.play("reel")
-					fishing_state = FishingState.REELING
-					start_catch_timer()
-				else:
-					fishing_rod.play("catch")
-					speed = 50
-					fishing_rod.frame = 0
-					fishing_state = FishingState.IDLE
-			FishingState.REELING:
-				if $Exclamation.visible:
-					print("You got a fish! (give duck sword)")
-					
+	if not GlobalGameRunner.has_fishing_rod:
+		print("You don't have a fishing rod.")
+		return
+
+	var current_scene = get_tree().current_scene
+	if current_scene.name != "FishingRoom":
+		print("Can't fish here!")
+		return
+
+	speed = 0
+	match fishing_state:
+		FishingState.IDLE:
+			fishing_rod.play("cast")
+		FishingState.WAITING:
+			if $Exclamation.visible:
+				fishing_rod.play("reel")
+				fishing_state = FishingState.REELING
+				start_catch_timer()
+			else:
 				fishing_rod.play("catch")
 				speed = 50
 				fishing_rod.frame = 0
 				fishing_state = FishingState.IDLE
+		FishingState.REELING:
+			if $Exclamation.visible:
+				print("You got a fish! (give duck sword)")
+			fishing_rod.play("catch")
+			speed = 50
+			fishing_rod.frame = 0
+			fishing_state = FishingState.IDLE
+
 
 func take_damage(damage: int):
 	print("taking damage: " + str(damage))
@@ -175,15 +183,14 @@ func die():
 	pass
 
 func _ready():
+	GlobalGameRunner.inventory_changed.connect(update_inventory_visibility)
+	update_inventory_visibility()
 	fishing_rod.frame = 0
-	update_rod_visibility()
 	$HealthBar.visible = false
 	$SwordHitbox.monitoring = false
 	$SwordHitbox.body_entered.connect(_on_SwordHitbox_body_entered)
-	object_animator.visible = has_sword
-	if get_tree().current_scene != null and get_tree().current_scene.scene_file_path == "res://hydrationnation/scenes/Dungeon.tscn":
-		equip_sword()
 	fishing_rod.animation_finished.connect(_on_casting_animation_finished)
+
 
 func _on_casting_animation_finished():
 	if fishing_rod.animation == "cast":
@@ -210,9 +217,6 @@ func start_catch_timer():
 	await get_tree().create_timer(1).timeout
 	$Exclamation.visible = false
 
-func update_rod_visibility():
-	var current_scene = get_tree().current_scene
-	$FishingRod.visible = current_scene.name == "FishingRoom" && GlobalGameRunner.has_fishing_rod
 
 func _on_SwordHitbox_body_entered(body):
 	if is_attacking and has_sword and body.is_in_group("enemies"):
@@ -224,3 +228,10 @@ func equip_sword():
 	has_sword = true
 	object_animator.visible = true
 	print("Sword Equipped!")
+
+func update_inventory_visibility():
+	# Sword
+	has_sword = GlobalGameRunner.has_sword
+	object_animator.visible = has_sword  
+
+	fishing_rod.visible = GlobalGameRunner.has_fishing_rod   
