@@ -1,6 +1,5 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3jnyyo11i3gy"]
+[gd_scene load_steps=22 format=3 uid="uid://b3jnyyo11i3gy"]
 
-[ext_resource type="PackedScene" uid="uid://c5oiq7uxp47sr" path="res://hydrationnation/scenes/obstacle.tscn" id="2_g1f37"]
 [ext_resource type="Texture2D" uid="uid://dw5y62dq4r7r6" path="res://hydrationnation/assets/tiles/PathDown.png" id="3_8c01m"]
 [ext_resource type="Texture2D" uid="uid://qalvsympow7o" path="res://hydrationnation/assets/tiles/PathDownEdge.png" id="4_e153j"]
 [ext_resource type="Texture2D" uid="uid://cr6fnuwugqb8a" path="res://hydrationnation/assets/tiles/PathLeft.png" id="5_u6fjm"]
@@ -93,8 +92,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("2_g1f37")]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_jl1ix")
