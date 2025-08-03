@@ -525,3 +525,11 @@ texture = ExtResource("22_oeo8b")
 [node name="B" type="Sprite2D" parent="."]
 position = Vector2(128, 154)
 texture = ExtResource("23_pw3cx")
+
+[node name="Label" type="Label" parent="."]
+z_index = 5
+offset_left = -273.453
+offset_top = 259.299
+offset_right = -11.4532
+offset_bottom = 282.299
+text = "Score 20000 points to get the jam!"

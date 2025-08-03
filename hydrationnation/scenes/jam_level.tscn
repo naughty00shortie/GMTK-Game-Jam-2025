@@ -337,6 +337,15 @@ item_name = "fishing_rod"
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("12_lkhfg")
 
+[node name="Label" type="Label" parent="."]
+z_index = 5
+offset_left = 11.896
+offset_top = 38.0701
+offset_right = 263.896
+offset_bottom = 87.0701
+text = "Press space to
+pump up the jam!"
+
 [connection signal="enable_jam" from="." to="growingObject" method="_on_jam_level_enable_jam"]
 [connection signal="jam_is_pumped" from="growingObject" to="." method="_on_growing_object_jam_is_pumped"]
 [connection signal="jam_is_pumped" from="growingObject" to="boundries/jamBarrier" method="_on_growing_object_jam_is_pumped"]

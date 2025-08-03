@@ -8,7 +8,7 @@ func _ready():
 		emit_signal("enable_jam")
 
 func _exit_tree():
-    # Restore volume when leaving
-    GlobalAudioStreamPlayer.volume_db = 0
+	# Restore volume when leaving
+	GlobalAudioStreamPlayer.volume_db = 0
 
-    
+	
