@@ -3,7 +3,9 @@ extends Node2D
 @onready var timer = $Timer
 @onready var timerLabel = $CanvasLayer/TimerLabel
 
-var has_fishing_rod: bool = true;
+var has_fishing_rod: bool = true
+var has_jam: bool = true
+
 
 func _ready():
 	GlobalAudioStreamPlayer.play_playlist()

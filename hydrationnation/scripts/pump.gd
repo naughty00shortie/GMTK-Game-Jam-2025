@@ -7,7 +7,7 @@ var player_near := false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player_near and Input.is_action_just_pressed("ui_accept"):
+	if player_near and Input.is_action_just_pressed("ui_accept") and GlobalGameRunner.has_jam:
 		animator.play("pump")
 		emit_signal("pumped")
 		

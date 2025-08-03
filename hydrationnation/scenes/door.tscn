@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://csrrsw6vcer2m"]
 
-[ext_resource type="Script" uid="uid://bj8wca13haq3n" path="res://hydrationnation/scripts/door.gd" id="1_sld5e"]
-[ext_resource type="Texture2D" uid="uid://bpcifh313lvtn" path="res://hydrationnation/assets/sprites/objects/door.png" id="2_xxx1h"]
+[ext_resource type="Script" uid="uid://boon32rnsnh7r" path="res://hydrationnation/scripts/door.gd" id="1_sld5e"]
+[ext_resource type="Texture2D" uid="uid://dvbjsckksnaw8" path="res://hydrationnation/assets/sprites/objects/door.png" id="2_xxx1h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxx1h"]
 
