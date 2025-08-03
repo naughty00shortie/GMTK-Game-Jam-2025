@@ -4,7 +4,7 @@ const BMP = preload("res://hydrationnation/audio/music/song2.ogg")
 
 var playlist: Array[AudioStream] =[
 	preload("res://hydrationnation/audio/music/bgm1.ogg"),
-	preload("res://hydrationnation/audio/music/transition.ogg"),
+	#preload("res://hydrationnation/audio/music/transition.ogg"),
 	preload("res://hydrationnation/audio/music/bgm2.ogg"),
 	BMP,
 	
@@ -34,7 +34,7 @@ func _play_current() -> void:
 
 func _on_finished() -> void:
 	current_index += 1
-	if current_index >= 3:
+	if current_index >= 2:
 		current_index = 0
 	_play_current()
 
@@ -44,5 +44,5 @@ func play_playlist() -> void:
 	
 
 func play_beatmap() -> void:
-	current_index = 3
+	current_index = 2
 	_play_current()
